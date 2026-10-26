@@ -1,10 +1,10 @@
 """Bundle SeatScore into one self-contained HTML file.
 
 Inlines styles.css, engine.js, app.js and data/layouts.json so the page works
-anywhere a single file can be hosted (a Claude Artifact, a gist, an email).
+anywhere a single file can be hosted (a gist, an email, a static host).
 
   python3 scripts/build_single.py            # full document -> dist/seatscore.html
-  python3 scripts/build_single.py --fragment # body-only fragment for Claude Artifacts
+  python3 scripts/build_single.py --fragment # body-only fragment for embedding in another page
 """
 import json
 import pathlib
