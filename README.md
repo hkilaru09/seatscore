@@ -39,7 +39,7 @@ v1/                          static site (deployed under /v1/)
   engine.js                  scoring and group search, pure functions (browser and Node)
   app.js                     UI: seat map, details, group finder, preferences
   data/layouts.json          sample theaters
-  tests/engine.test.js       unit tests (node --test v1/tests/)
+  tests/engine.test.js       unit tests (node --test v1/tests/*.test.js)
   scripts/build_single.py    bundles v1 into one HTML file
 web/                         v2: React + TypeScript + Vite (deployed at the site root)
   src/engine/                typed port of the engine: geometry, scoring, groups, bookings
@@ -98,7 +98,7 @@ Then open http://localhost:8000.
 Run the tests (Node 18 or later):
 
 ```bash
-node --test v1/tests/
+node --test v1/tests/*.test.js
 ```
 
 Build a single self-contained HTML file in `v1/dist/seatscore.html`:

@@ -19,15 +19,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
           cache-dependency-path: web/package-lock.json
       - name: v1 tests
-        run: node --test v1/tests/
-      - uses: actions/setup-python@v5
+        run: node --test v1/tests/*.test.js
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: pip
@@ -62,10 +62,10 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
           cache-dependency-path: web/package-lock.json
       - name: Build v2
@@ -80,7 +80,7 @@ jobs:
           cp v1/index.html v1/styles.css v1/engine.js v1/app.js _site/v1/
           cp v1/data/layouts.json _site/v1/data/
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
       - id: deployment
